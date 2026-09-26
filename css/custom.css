@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+
+                                        /* ########## Reset the existing Styling to Global #############  */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+
+
+                                /* ####### Bakcground ######### */
+.main {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url("../image/background-dark.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+                                /* #############  Overlay styling !!  */
+.overlay {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.58);
+}
+
+
+                                                /* ##################### Title stylings ##################### */
+.title {
+    margin-bottom: 1rem;
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 1px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+
+                        /* ##################### Date stylings ##################### */
+.date {
+    margin-bottom: 3rem;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-family: "Rajdhani", sans-serif;
+    font-size: clamp(1.2rem, 2vw, 1.7rem);
+    font-weight: 500;
+
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+
+                            /* ##################### Countdown container stylings #####################*/
+.col {
+    width: min(900px, 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+
+                            /* ##################### Independent Countdown Box stylings  #####################*/
+.col > div {
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+                                                /* ##################### Hover Effect ##################### */
+
+.col > div:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+
+                                        /* ##################### Countdown Input stylings ##################### */
+.col input {
+    width: 100%;
+    height: 80px;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #111;
+    font-family: "Rajdhani", sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.25);
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+                                        /* ##################### Input :Focus stylings ##################### */
+.col input:focus {
+    background: #ffffff;
+    transform: scale(1.03);
+}
+
+
+                                            /* ##################### Labels stylings ##################### */
+.col label {
+    margin-top: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+
+                                    /* ##################### Media Queries Responsive Design ##################### */
+@media (max-width: 700px) {
+    .overlay {
+        padding: 1.5rem;
+    }
+
+    .date {
+        margin-bottom: 2rem;
+    }
+
+    .col {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 1rem;
+    }
+
+    .col > div {
+        width: 100%;
+    }
+
+    .col input {
+        height: 70px;
+        font-size: 2.5rem;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .col {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .col input {
+        height: 60px;
+        font-size: 2rem;
+    }
+
+    .col > div {
+        padding: 0.8rem;
+    }
+
+    .col label {
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+}
