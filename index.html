@@ -7,40 +7,44 @@
     <link rel="stylesheet" href="./css/custom.css">
 </head>
 <body>
-    <div class="main">
+<main class="main">
         <div class="overlay">
-            <div class="title">We will be back soon ! </div>
-            <div class="date" id="end_Date">10 October 2026 11:59 PM</div>
-            <div class="col">
-                <div>
-                    <input type="text">
-                    <br>
-                    <label for = "">Days</label>
-                </div>
+            <div class="content">
+                <p class="eyebrow">COUNTDOWN</p>
+                <h1 class="title">We will be back soon!</h1>
 
-                <div>
-                    <input type="text">
-                    <br>
-                    <label for = "">Hours</label>
-                </div>
+                <time class="date" id="end_Date" datetime="2026-10-10T23:59:00">
+                    10 October 2026 11:59 PM
+                </time>
 
-                <div>
-                    <input type="text">
-                    <br>
-                    <label for = "">Minutes</label>
-                </div>
+                <section class="countdown" aria-label="Countdown timer">
+                    <div class="countdown-card">
+                        <output class="time-value" id="days" aria-label="Days">00</output>
+                        <span class="unit">Days</span>
+                    </div>
 
-                <div>
-                    <input type="text">
-                    <br>
-                    <label for = "">Seconds</label>
-                </div>
+                    <div class="countdown-card">
+                        <output class="time-value" id="hours" aria-label="Hours">00</output>
+                        <span class="unit">Hours</span>
+                    </div>
 
+                    <div class="countdown-card">
+                        <output class="time-value" id="minutes" aria-label="Minutes">00</output>
+                        <span class="unit">Minutes</span>
+                    </div>
+
+                    <div class="countdown-card">
+                        <output class="time-value" id="seconds" aria-label="Seconds">00</output>
+                        <span class="unit">Seconds</span>
+                    </div>
+                </section>
+
+                <p class="status" id="countdownStatus" aria-live="polite">
+                    Counting down...
+                </p>
             </div>
-
         </div>
-
-    </div>
+    </main>
 
     <script src="./js/app.js" defer></script>
 
