@@ -7,12 +7,16 @@ const clock = ()=>{
     const end = new Date(endDate);
     const now = new Date();
     const difference_ = end - now; // here we will get result in seconds 
+
     // now in next line we are converting that difference into mili-seconds 
     const milsec = difference_ / 1000;
-    console.log(end,now);
+
+    if(milsec<0) {
+        return;
+    }
 
     // converting to DAYS !!
-    // const days = Math.floor(milsec/3600/24);
+
 
     inputs[0].value = Math.floor(milsec/3600/24); // DAYS
 
@@ -26,6 +30,8 @@ const clock = ()=>{
         // initial call !! 
 clock();
 
-setInterval(clock())
+setInterval(()=>{
+    clock();
+},1000);
 
 
