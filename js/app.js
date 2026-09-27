@@ -1,37 +1,60 @@
-const endDate = "10 October 2026 11:59 PM"
-document.getElementById("end_Date").innerText = endDate;
+const targetDate = new Date("2026-10-10T23:59:00");
 
-const inputs = document.querySelectorAll("input");
+const daysElement = document.getElementById("days");
+const hoursElement = document.getElementById("hours");
+const minutesElement = document.getElementById("minutes");
+const secondsElement = document.getElementById("seconds");
+const statusElement = document.getElementById("countdownStatus");
 
-const clock = ()=>{
-    const end = new Date(endDate);
-    const now = new Date();
-    const difference_ = end - now; // here we will get result in seconds 
+let timerId;
 
-    // now in next line we are converting that difference into mili-seconds 
-    const milsec = difference_ / 1000;
+const pad = (value) => String(value).padStart(2, "0");
 
-    if(milsec<0) {
+const updateValue = (element, value) => {
+    const nextValue = pad(value);
+
+    if (element.textContent === nextValue) {
         return;
     }
 
-    // converting to DAYS !!
+    element.textContent = nextValue;
+    element.classList.remove("tick");
+    void element.offsetWidth;
+    element.classList.add("tick");
+};
 
+const showZero = () => {
+    updateValue(daysElement, 0);
+    updateValue(hoursElement, 0);
+    updateValue(minutesElement, 0);
+    updateValue(secondsElement, 0);
+};
 
-    inputs[0].value = Math.floor(milsec/3600/24); // DAYS
+const clock = () => {
+    const now = new Date();
+    const difference = targetDate - now;
 
-    inputs[1].value = Math.floor((milsec/3600)%24); // HOURS
+    if (difference <= 0) {
+        showZero();
+        statusElement.textContent = "We're back!";
+        clearInterval(timerId);
+        return;
+    }
 
-    inputs[2].value = Math.floor((milsec/60)%60); // MINUTES
+    const totalSeconds = Math.floor(difference / 1000);
 
-    inputs[3].value = Math.floor((milsec)%60); // SECONDS
+    const days = Math.floor(totalSeconds / (60 * 60 * 24));
+    const hours = Math.floor((totalSeconds / (60 * 60)) % 24);
+    const minutes = Math.floor((totalSeconds / 60) % 60);
+    const seconds = totalSeconds % 60;
 
-}
-        // initial call !! 
+    updateValue(daysElement, days);
+    updateValue(hoursElement, hours);
+    updateValue(minutesElement, minutes);
+    updateValue(secondsElement, seconds);
+
+    statusElement.textContent = "Counting down...";
+};
+
 clock();
-
-setInterval(()=>{
-    clock();
-},1000);
-
-
+timerId = setInterval(clock, 1000);
