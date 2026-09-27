@@ -1,155 +1,200 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Rajdhani:wght@400;500;600;700&display=swap');
 
+:root {
+    --font-heading: "Montserrat", sans-serif;
+    --font-display: "Rajdhani", sans-serif;
+    --text-primary: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.72);
+    --glass-bg: rgba(255, 255, 255, 0.075);
+    --glass-border: rgba(255, 255, 255, 0.16);
+    --glass-border-hover: rgba(255, 255, 255, 0.32);
+}
 
-                                        /* ########## Reset the existing Styling to Global #############  */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body {
-    font-family: "Montserrat", sans-serif;
+html {
+    min-height: 100%;
 }
 
+body {
+    min-height: 100%;
+    font-family: var(--font-heading);
+    background: #08090b;
+    color: var(--text-primary);
+}
 
-
-                                /* ####### Bakcground ######### */
 .main {
-    width: 100%;
-    min-height: 100vh;
+    position: relative;
+    min-height: 100svh;
+    isolation: isolate;
     background-image: url("../image/background-dark.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
+.main::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 50% 42%, rgba(255, 255, 255, 0.08), transparent 34%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.48));
+    pointer-events: none;
+}
 
-                                /* #############  Overlay styling !!  */
 .overlay {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
     padding: 2rem;
-    color: white;
-    background: rgba(0, 0, 0, 0.58);
+    background: rgba(0, 0, 0, 0.56);
 }
 
-
-                                                /* ##################### Title stylings ##################### */
-.title {
-    margin-bottom: 1rem;
-    color: #ffffff;
-    font-family: "Montserrat", sans-serif;
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 600;
-    text-align: center;
-    letter-spacing: 1px;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-}
-
-
-                        /* ##################### Date stylings ##################### */
-.date {
-    margin-bottom: 3rem;
-
-    color: rgba(255, 255, 255, 0.75);
-
-    font-family: "Rajdhani", sans-serif;
-    font-size: clamp(1.2rem, 2vw, 1.7rem);
-    font-weight: 500;
-
-    text-align: center;
-    letter-spacing: 2px;
-}
-
-
-                            /* ##################### Countdown container stylings #####################*/
-.col {
-    width: min(900px, 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-
-                            /* ##################### Independent Countdown Box stylings  #####################*/
-.col > div {
-    width: 180px;
+.content {
+    width: min(960px, 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.2rem;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        border-color 0.3s ease;
-}
-
-
-                                                /* ##################### Hover Effect ##################### */
-
-.col > div:hover {
-    transform: translateY(-6px);
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-
-                                        /* ##################### Countdown Input stylings ##################### */
-.col input {
-    width: 100%;
-    height: 80px;
-    border: none;
-    outline: none;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.92);
-    color: #111;
-    font-family: "Rajdhani", sans-serif;
-    font-size: 3rem;
-    font-weight: 700;
     text-align: center;
-    box-shadow:
-        0 5px 20px rgba(0, 0, 0, 0.25);
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease;
 }
 
-
-                                        /* ##################### Input :Focus stylings ##################### */
-.col input:focus {
-    background: #ffffff;
-    transform: scale(1.03);
-}
-
-
-                                            /* ##################### Labels stylings ##################### */
-.col label {
-    margin-top: 0.8rem;
-    color: rgba(255, 255, 255, 0.8);
-    font-family: "Montserrat", sans-serif;
-    font-size: 0.8rem;
+.eyebrow {
+    margin-bottom: 0.75rem;
+    color: rgba(255, 255, 255, 0.55);
+    font-family: var(--font-display);
+    font-size: 0.85rem;
     font-weight: 600;
+    letter-spacing: 0.35em;
     text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
+.title {
+    margin-bottom: 0.9rem;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 5vw, 4.25rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    text-shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+}
 
-                                    /* ##################### Media Queries Responsive Design ##################### */
-@media (max-width: 700px) {
+.date {
+    display: inline-block;
+    margin-bottom: 2.8rem;
+    color: var(--text-muted);
+    font-family: var(--font-display);
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+}
+
+.countdown {
+    width: min(860px, 100%);
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.countdown-card {
+    position: relative;
+    min-width: 0;
+    padding: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    background: var(--glass-bg);
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition:
+        transform 220ms ease,
+        background 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease;
+}
+
+.countdown-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent 38%);
+    pointer-events: none;
+}
+
+.countdown-card:hover {
+    transform: translateY(-7px);
+    border-color: var(--glass-border-hover);
+    background: rgba(255, 255, 255, 0.11);
+    box-shadow:
+        0 22px 50px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.time-value {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    min-height: 82px;
+    padding: 0.25rem 0.5rem;
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 0.93);
+    color: #101114;
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.24);
+}
+
+.time-value.tick {
+    animation: tick 280ms ease;
+}
+
+.unit {
+    position: relative;
+    z-index: 1;
+    display: block;
+    margin-top: 0.85rem;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.status {
+    min-height: 1.5em;
+    margin-top: 1.55rem;
+    color: rgba(255, 255, 255, 0.46);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+@keyframes tick {
+    0% {
+        transform: scale(0.97);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 760px) {
     .overlay {
         padding: 1.5rem;
     }
@@ -158,40 +203,69 @@ body {
         margin-bottom: 2rem;
     }
 
-    .col {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-
-        gap: 1rem;
+    .countdown {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.9rem;
+        max-width: 560px;
     }
 
-    .col > div {
-        width: 100%;
-    }
-
-    .col input {
-        height: 70px;
-        font-size: 2.5rem;
+    .countdown-card {
+        padding: 0.85rem;
     }
 }
 
-
-@media (max-width: 400px) {
-    .col {
-        grid-template-columns: 1fr 1fr;
+@media (max-width: 430px) {
+    .overlay {
+        padding: 1rem;
     }
 
-    .col input {
-        height: 60px;
-        font-size: 2rem;
+    .eyebrow {
+        font-size: 0.72rem;
+        letter-spacing: 0.28em;
     }
 
-    .col > div {
-        padding: 0.8rem;
+    .title {
+        font-size: clamp(2rem, 10vw, 2.7rem);
     }
 
-    .col label {
-        font-size: 0.7rem;
-        letter-spacing: 1px;
+    .date {
+        max-width: 320px;
+        margin-bottom: 1.6rem;
+        font-size: 1rem;
+        line-height: 1.35;
+    }
+
+    .countdown {
+        gap: 0.7rem;
+    }
+
+    .countdown-card {
+        padding: 0.65rem;
+        border-radius: 14px;
+    }
+
+    .time-value {
+        min-height: 65px;
+        border-radius: 10px;
+        font-size: 2.15rem;
+    }
+
+    .unit {
+        margin-top: 0.65rem;
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+    }
+
+    .status {
+        margin-top: 1.2rem;
+        font-size: 0.72rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .countdown-card,
+    .time-value {
+        transition: none;
+        animation: none;
     }
 }
